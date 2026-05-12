@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+
+  /* ── Primary — Reel Red ─────────────────── */
+  --color-primary-50:    #FFF0F0;
+  --color-primary-100:   #FFD5D5;
+  --color-primary-200:   #FFB3B3;
+  --color-primary-400:   #FF3B3B;
+  --color-primary-600:   #C8001E;
+  --color-primary-800:   #8A0014;
+  --color-primary-900:   #52000C;
+
+  /* ── Neutral — Projection Dark ──────────── */
+  --color-neutral-50:    #F4F3F0;
+  --color-neutral-100:   #E2E0DC;
+  --color-neutral-200:   #C4C2BC;
+  --color-neutral-400:   #8A8880;
+  --color-neutral-600:   #504E49;
+  --color-neutral-800:   #2A2926;
+  --color-neutral-950:   #0D0C0B;
+
+  /* ── Accent — Film Gold ─────────────────── */
+  --color-gold-50:       #FDF6E3;
+  --color-gold-200:      #F6D98A;
+  --color-gold-400:      #E8A020;
+  --color-gold-700:      #9A6200;
+
+  /* ── Accent — Lens Blue ─────────────────── */
+  --color-blue-50:       #EAF2FF;
+  --color-blue-200:      #93BFFD;
+  --color-blue-500:      #2D7EF8;
+  --color-blue-800:      #0D3D8A;
+
+  /* ── Semantic aliases ───────────────────── */
+  --color-bg:            var(--color-neutral-950);
+  --color-bg-raised:     var(--color-neutral-800);
+  --color-bg-overlay:    var(--color-neutral-600);
+  --color-surface:       var(--color-neutral-50);
+
+  --color-text-base:     var(--color-neutral-50);
+  --color-text-muted:    var(--color-neutral-400);
+  --color-text-inverted: var(--color-neutral-950);
+
+  --color-accent:        var(--color-primary-600);
+  --color-accent-hover:  var(--color-primary-400);
+  --color-accent-subtle: var(--color-primary-50);
+
+  --color-star:          var(--color-gold-400);
+  --color-link:          var(--color-blue-500);
+  --color-border:        var(--color-neutral-600);
+  --color-border-subtle: var(--color-neutral-800);
+
+}
