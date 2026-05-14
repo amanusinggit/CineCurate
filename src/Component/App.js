@@ -1,9 +1,11 @@
+import { Outlet } from "react-router";
 import Header from "./Header";
 
 function App() {
   return (
-    <div className="bg-void h-screen">
+    <div className="bg-void min-h-screen">
       <Header />
+      <Outlet />
     </div>
   );
 }
