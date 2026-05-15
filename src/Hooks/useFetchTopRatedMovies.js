@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { options } from "../Constants/constants";
 import { setTopRatedMovies } from "../features/Movies/moviesSlice";
 
-const useFetchTopRatedMovies = () => {
+const useFetchTopRatedMovies = (enabled) => {
   const dispatch = useDispatch();
   useEffect(() => {
     const fetchMovieData = async () => {
@@ -15,6 +15,7 @@ const useFetchTopRatedMovies = () => {
       console.log(jsonData);
       dispatch(setTopRatedMovies(jsonData.results));
     };
+    if (!enabled) return;
     fetchMovieData();
   }, []);
 };

@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { options } from "../Constants/constants";
 import { setNowPlayingMovies } from "../features/Movies/moviesSlice";
 
-const useFetchNowPlayingMovies = () => {
+const useFetchNowPlayingMovies = (enabled) => {
   const dispatch = useDispatch();
   useEffect(() => {
     const fetchMovieData = async () => {
@@ -15,6 +15,7 @@ const useFetchNowPlayingMovies = () => {
       console.log(jsonData);
       dispatch(setNowPlayingMovies(jsonData.results));
     };
+    if (!enabled) return;
     fetchMovieData();
   }, []);
 };
