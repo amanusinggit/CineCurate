@@ -7,6 +7,8 @@ import { RouterProvider } from "react-router/dom";
 import Home from "./Home";
 import { Provider } from "react-redux";
 import store from "./app/store";
+import MovieListCarousel from "./Component/MovieListCarousel";
+import MovieRegistry from "./Component/MovieRegistry";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -26,6 +28,10 @@ const browserRouterConfig = createBrowserRouter([
       {
         path: "/list",
         element: <div>List Page</div>,
+      },
+      {
+        path: "/movies/:heading",
+        element: <MovieRegistry />,
       },
     ],
   },

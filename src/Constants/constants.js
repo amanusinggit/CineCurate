@@ -8,3 +8,8 @@ export const options = {
 };
 
 export const imageBaseUrl = "https://image.tmdb.org/t/p/w500/";
+
+export const movieTypes = {
+  "top rated movies": "topRatedMovies",
+  "now playing movies": "nowPlayingMovies",
+};

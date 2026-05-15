@@ -2,16 +2,16 @@ import { useSelector } from "react-redux";
 import { imageBaseUrl } from "./Constants/constants";
 import useFetchNowPlayingMovies from "./Hooks/useFetchNowPlayingMovies";
 import Rating from "./Component/Rating";
-import MovieListCarousel from "./Component/MovieListCarousel ";
+import MovieListCarousel from "./Component/MovieListCarousel";
 
 const Home = () => {
   const movieData = useSelector((state) => {
     return state.movies.nowPlayingMovies;
   });
-  useFetchNowPlayingMovies();
+  useFetchNowPlayingMovies(true);
   return (
     <div>
-      <div className="p-24 relative">
+      <div className="p-24 mb-8 relative">
         <div className="absolute inset-0  bg-[radial-gradient(ellipse_at_60%_50%,#E8C54712_0%,transparent_60%),radial-gradient(ellipse_at_10%_80%,#E0525215_0%,transparent_40%)]"></div>
         <div className="child flex">
           <div className="w-[60%] pr-12 text-ash relative z-10">
@@ -51,6 +51,7 @@ const Home = () => {
         </div>
       </div>
       <MovieListCarousel heading={"Top Rated Movies"} />
+      <MovieListCarousel heading={"Now Playing Movies"} />
     </div>
   );
 };
