@@ -3,8 +3,13 @@ import { imageBaseUrl } from "./Constants/constants";
 import useFetchNowPlayingMovies from "./Hooks/useFetchNowPlayingMovies";
 import Rating from "./Component/Rating";
 import MovieListCarousel from "./Component/MovieListCarousel";
+import { useNavigate } from "react-router";
 
 const Home = () => {
+  const navigate = useNavigate();
+  const navigateToMovieDescription = () => {
+    navigate(`/movie/${movieData[0]?.id}`);
+  };
   const movieData = useSelector((state) => {
     return state.movies.nowPlayingMovies;
   });
@@ -33,14 +38,17 @@ const Home = () => {
               <button className="px-5 py-2 bg-gold-bright text-black rounded-lg font-bold">
                 <i className="fa-solid fa-plus px-1"></i>Add To List
               </button>
-              <button className="px-5 py-2 border border-frame rounded-lg bg-reel">
+              <button
+                className="px-5 py-2 border border-frame rounded-lg bg-reel"
+                onClick={navigateToMovieDescription}
+              >
                 View Details
               </button>
             </div>
           </div>
           <div className="w-[40%] flex">
             <div className="relative p-8 flex items-center justify-center">
-              <div className="absolute rounded-3xl inset-0 bg-gold-glow from-gold-tint to-reel"></div>
+              <div className="absolute rounded-3xl inset-0 bg-gold-glow from-gold-tint to-reel border-[#F0EEE81A] border"></div>
               <img
                 src={imageBaseUrl + movieData[0]?.backdrop_path}
                 alt="Movie Poster"

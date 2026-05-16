@@ -1,9 +1,19 @@
 import React from "react";
 import { imageBaseUrl } from "../Constants/constants";
+import { useNavigate } from "react-router";
 
 const MovieCard = ({ movie }) => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate(`/movie/${movie.id}`);
+  };
   return (
-    <div className="flex-shrink-0 flex-grow-0 basis-[10%] rounded-lg min-w-0 ">
+    <div
+      className="flex-shrink-0 flex-grow-0 basis-[10%] rounded-lg min-w-0"
+      onClick={() => {
+        handleClick();
+      }}
+    >
       <div key={movie.id} className="">
         <img
           className="rounded-lg"
