@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
-import { imageBaseUrl } from "./Constants/constants";
-import useFetchNowPlayingMovies from "./Hooks/useFetchNowPlayingMovies";
-import Rating from "./Component/Rating";
-import MovieListCarousel from "./Component/MovieListCarousel";
+import { imageBaseUrl } from "../../Constants/constants";
+import useFetchNowPlayingMovies from "../../Hooks/useFetchNowPlayingMovies";
+import Rating from "../Miscellaneous/Rating";
+import MovieListCarousel from "../Carousel/MovieListCarousel";
 import { useNavigate } from "react-router";
 
 const Home = () => {

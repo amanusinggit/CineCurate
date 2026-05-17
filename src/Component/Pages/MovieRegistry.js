@@ -1,9 +1,9 @@
 import React from "react";
-import MovieCard from "./MovieCard";
+import MovieCard from "../Card/MovieCard";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router";
-import useFetchMovies from "../Hooks/useFetchMovies";
-import { movieTypes } from "../Constants/constants";
+import useFetchMovies from "../../Hooks/useFetchMovies";
+import { movieTypes } from "../../Constants/constants";
 
 const MovieRegistry = () => {
   const { heading } = useParams();

@@ -1,9 +1,8 @@
 import { useSelector } from "react-redux";
-import useFetchTopRatedMovies from "../Hooks/useFetchTopRatedMovies";
 import { useNavigate } from "react-router";
-import MovieCard from "./MovieCard";
-import { movieTypes } from "../Constants/constants";
-import useFetchMovies from "../Hooks/useFetchMovies";
+import MovieCard from "../Card/MovieCard";
+import { movieTypes } from "../../Constants/constants";
+import useFetchMovies from "../../Hooks/useFetchMovies";
 
 const MovieListCarousel = ({ heading }) => {
   const movieList = useSelector((state) => {

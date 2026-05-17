@@ -1,14 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./Component/App";
+import App from "./Component/Pages/App";
 import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
-import Home from "./Home";
+import Home from "./Component/Pages/Home";
 import { Provider } from "react-redux";
 import store from "./app/store";
-import MovieDescription from "./Component/MovieDescription";
-import MovieRegistry from "./Component/MovieRegistry";
+import MovieDescription from "./Component/Pages/MovieDescription";
+import MovieRegistry from "./Component/Pages/MovieRegistry";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
