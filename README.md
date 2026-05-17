@@ -12,3 +12,4 @@ Setting Up Redux Store
 8. how to create a tab
 9. fixing a youtube video without its logo
 10. creating comment section, comment with either content height or min-height, seeMore or seeLess button toggle, showing seeMore only if required.[use of window.innerHeight, useRef.current.offsetHeight]
+11. links vs navlinks:
