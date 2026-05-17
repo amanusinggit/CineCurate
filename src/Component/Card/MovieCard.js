@@ -1,5 +1,5 @@
 import React from "react";
-import { imageBaseUrl } from "../Constants/constants";
+import { imageBaseUrl } from "../../Constants/constants";
 import { useNavigate } from "react-router";
 
 const MovieCard = ({ movie }) => {
