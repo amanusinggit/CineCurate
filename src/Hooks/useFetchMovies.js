@@ -3,8 +3,8 @@ import useFetchTopRatedMovies from "./useFetchTopRatedMovies";
 
 const useFetchMovies = (type) => {
   console.log(type, type === "Now Playing Movies");
-  useFetchNowPlayingMovies(type === "Now Playing Movies");
-  useFetchTopRatedMovies(type === "Top Rated Movies");
+  useFetchNowPlayingMovies(type === "nowPlayingMovies");
+  useFetchTopRatedMovies(type === "topRatedMovies");
 };
 
 export default useFetchMovies;

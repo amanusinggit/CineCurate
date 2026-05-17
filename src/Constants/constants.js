@@ -13,3 +13,5 @@ export const movieTypes = {
   "top rated movies": "topRatedMovies",
   "now playing movies": "nowPlayingMovies",
 };
+
+export const IMDB_URL = "https://www.imdb.com/title/";

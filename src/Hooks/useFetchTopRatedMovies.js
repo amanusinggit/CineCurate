@@ -12,7 +12,6 @@ const useFetchTopRatedMovies = (enabled) => {
         options,
       );
       const jsonData = await data.json();
-      console.log(jsonData);
       dispatch(setTopRatedMovies(jsonData.results));
     };
     if (!enabled) return;
