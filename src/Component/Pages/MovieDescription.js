@@ -13,7 +13,7 @@ const MovieDescription = () => {
   const tabData = [
     {
       tabHeading: "Reviews",
-      Component: <ReviewsTab reviews={movieDetails?.reviews?.results} />,
+      Component: <ReviewsTab reviews={movieDetails?.reviews} />,
     },
     {
       tabHeading: "Links",

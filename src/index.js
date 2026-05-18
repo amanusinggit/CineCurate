@@ -9,6 +9,7 @@ import { Provider } from "react-redux";
 import store from "./app/store";
 import MovieDescription from "./Component/Pages/MovieDescription";
 import MovieRegistry from "./Component/Pages/MovieRegistry";
+import ListPage from "./Component/Pages/ListPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -27,7 +28,7 @@ const browserRouterConfig = createBrowserRouter([
       },
       {
         path: "/list",
-        element: <div>List Page</div>,
+        element: <ListPage />,
       },
       {
         path: "/movies/:heading",

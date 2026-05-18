@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import Profile from "../Profile/Profile";
 
 const Review = ({ review }) => {
   const reviewBox = useRef();
@@ -32,11 +33,7 @@ const Review = ({ review }) => {
         </button>
       )}
       <div className="flex gap-3">
-        <div className="w-12 flex items-center">
-          <div className="w-full flex justify-center items-center font-semiboldbold text-xl aspect-square rounded-full bg-gold-800 border border-gold-200/50 text-gold-bright">
-            {review.author[0].toUpperCase()}
-          </div>
-        </div>
+        <Profile name={review.author} />
         <div className="w-full">
           <div className="font-bold text-xl text-celluloid pb-1">
             {review?.author}
