@@ -12,3 +12,7 @@ Setting Up Redux Store
 8. how to create a tab
 9. fixing a youtube video without its logo
 10. creating comment section, comment with either content height or min-height, seeMore or seeLess button toggle, showing seeMore only if required.[use of window.innerHeight, useRef.current.offsetHeight]
+11. links vs navlinks: navlinks has state attached to it [we can use a variable isActive and isPending]
+12. function as a component: In react a component can either be a function or JSX. [not both]
+13. Using promise.all to use resolve a array of promises
+14. using aspect ratio: it needs atleast a fix thing: height or width

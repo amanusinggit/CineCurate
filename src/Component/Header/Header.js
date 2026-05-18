@@ -1,5 +1,6 @@
 import Logo from "../Logo/Logo";
 import Navbar from "../Navbar/Navbar";
+import Profile from "../Profile/Profile";
 
 const Header = () => {
   return (
@@ -7,7 +8,7 @@ const Header = () => {
       <Logo />
       <div className="flex items-center gap-12">
         <Navbar />
-        <div className="text-celluloid">profile</div>
+        <Profile name="Aman" />
       </div>
     </div>
   );

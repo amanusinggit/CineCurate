@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
-import { imageBaseUrl } from "../../Constants/constants";
 import useFetchNowPlayingMovies from "../../Hooks/useFetchNowPlayingMovies";
 import Rating from "../Miscellaneous/Rating";
 import MovieListCarousel from "../Carousel/MovieListCarousel";
 import { useNavigate } from "react-router";
+import { IMAGE_BASE_URL } from "../../Constants/constants";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -50,7 +50,7 @@ const Home = () => {
             <div className="relative p-8 flex items-center justify-center">
               <div className="absolute rounded-3xl inset-0 bg-gold-glow from-gold-tint to-reel border-[#F0EEE81A] border"></div>
               <img
-                src={imageBaseUrl + movieData[0]?.backdrop_path}
+                src={IMAGE_BASE_URL + movieData[0]?.backdrop_path}
                 alt="Movie Poster"
                 className="rounded-3xl relative z-10"
               ></img>

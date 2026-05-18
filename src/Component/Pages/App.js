@@ -3,7 +3,7 @@ import Header from "../Header/Header";
 
 function App() {
   return (
-    <div className="bg-void min-h-screen">
+    <div className="bg-void min-h-screen flex flex-col">
       <Header />
       <Outlet />
     </div>

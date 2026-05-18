@@ -1,5 +1,5 @@
 import React from "react";
-import { imageBaseUrl } from "../../Constants/constants";
+import { IMAGE_BASE_URL } from "../../Constants/constants";
 import { useNavigate } from "react-router";
 
 const MovieCard = ({ movie }) => {
@@ -17,7 +17,7 @@ const MovieCard = ({ movie }) => {
       <div key={movie.id} className="">
         <img
           className="rounded-lg"
-          src={imageBaseUrl + movie.poster_path}
+          src={IMAGE_BASE_URL + movie.poster_path}
           alt={movie.original_title}
         />
       </div>
