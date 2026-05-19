@@ -10,6 +10,7 @@ import store from "./app/store";
 import MovieDescription from "./Component/Pages/MovieDescription";
 import MovieRegistry from "./Component/Pages/MovieRegistry";
 import ListPage from "./Component/Pages/ListPage";
+import SearchPage from "./Component/Pages/SearchPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -24,7 +25,7 @@ const browserRouterConfig = createBrowserRouter([
       },
       {
         path: "/search",
-        element: <div>Search Page</div>,
+        element: <SearchPage />,
       },
       {
         path: "/list",
