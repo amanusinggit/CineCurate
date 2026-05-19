@@ -16,3 +16,4 @@ Setting Up Redux Store
 12. function as a component: In react a component can either be a function or JSX. [not both]
 13. Using promise.all to use resolve a array of promises
 14. using aspect ratio: it needs atleast a fix thing: height or width
+15. apply background-gradient and play with z-index to make it back, but not completely behind the parent container too: try adding positive z-index to child to make it above the background gradient, that won't work as position static does not allow z-index: make the child div as relative

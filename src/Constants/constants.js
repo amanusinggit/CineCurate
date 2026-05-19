@@ -6,7 +6,6 @@ export const options = {
     Authorization: `Bearer ${TMDB_TOKEN}`,
   },
 };
-
 export const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500/";
 
 export const movieTypes = {
