@@ -8,7 +8,7 @@ const Navbar = () => {
         <NavLink
           to="/"
           className={({ isActive }) =>
-            `mx-4 px-4 py-2 border border-void hover:text-gold-200  hover:border-solid hover:rounded-md cursor-pointer ${isActive && "bg-gold-tint border-solid border-gold-bright rounded-md text-gold-200"}`
+            `mx-4 px-4 py-2 border hover:text-gold-200  hover:border-solid hover:rounded-md cursor-pointer ${isActive ? "bg-gold-tint border-gold-bright rounded-md text-gold-200" : "border-void"}`
           }
         >
           Home
@@ -16,7 +16,7 @@ const Navbar = () => {
         <NavLink
           to="/search"
           className={({ isActive }) =>
-            `mx-4 px-4 py-2 border border-void hover:text-gold-200  hover:border-solid hover:rounded-md cursor-pointer ${isActive && "bg-gold-tint border-solid border-gold-bright rounded-md text-gold-200"}`
+            `mx-4 px-4 py-2 border hover:text-gold-200  hover:border-solid hover:rounded-md cursor-pointer ${isActive ? "bg-gold-tint border-gold-bright rounded-md text-gold-200" : "border-void"}`
           }
         >
           Search
@@ -24,7 +24,7 @@ const Navbar = () => {
         <NavLink
           to="/list"
           className={({ isActive }) =>
-            `mx-4 px-4 py-2 border border-void hover:text-gold-200  hover:border-solid hover:rounded-md cursor-pointer ${isActive && "bg-gold-tint border-solid border-gold-bright rounded-md text-gold-200"}`
+            `mx-4 px-4 py-2 border hover:text-gold-200  hover:border-solid hover:rounded-md cursor-pointer ${isActive ? "bg-gold-tint border-gold-bright rounded-md text-gold-200" : "border-void"}`
           }
         >
           List

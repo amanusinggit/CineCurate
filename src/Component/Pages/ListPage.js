@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import listData from "../../Data/listData";
 import { IMAGE_BASE_URL, options } from "../../Constants/constants";
 import convertToHrsMin from "../../Utility/convertToHrsMin";
+import { Link } from "react-router";
 
 const ListPage = () => {
   const [movies, setMovies] = useState(null);
@@ -108,27 +109,29 @@ const ListPage = () => {
                 </div>
                 {listItem.movieListId.map((movieId, i) =>
                   movies ? (
-                    <div className="flex my-8 py-2 px-4 border border-ash/10 bg-studio rounded-lg items-center">
-                      <div className="mx-4 mr-6">{i + 1}</div>
+                    <Link to={`/movie/${movieId}`}>
+                      <div className="flex my-8 py-2 px-4 border border-ash/10 bg-studio rounded-lg items-center">
+                        <div className="mx-4 mr-6">{i + 1}</div>
 
-                      <div className="p-4 w-[100px]">
-                        <img
-                          className="rounded-lg"
-                          src={IMAGE_BASE_URL + movies[i]?.poster_path}
-                          alt="movie_poster"
-                        ></img>
-                      </div>
-                      <div className="">
-                        <div className="font-2xl font-semibold text-celluloid">
-                          {movies[i]?.title}
+                        <div className="p-4 w-[100px]">
+                          <img
+                            className="rounded-lg"
+                            src={IMAGE_BASE_URL + movies[i]?.poster_path}
+                            alt="movie_poster"
+                          ></img>
                         </div>
-                        <div className="font-xs text-ash flex gap-2">
-                          <span>{convertToHrsMin(movies[i]?.runtime)}</span>
-                          <span>•</span>
-                          <span>{movies[i]?.release_date.split("-")[0]}</span>
+                        <div className="">
+                          <div className="font-2xl font-semibold text-celluloid">
+                            {movies[i]?.title}
+                          </div>
+                          <div className="font-xs text-ash flex gap-2">
+                            <span>{convertToHrsMin(movies[i]?.runtime)}</span>
+                            <span>•</span>
+                            <span>{movies[i]?.release_date.split("-")[0]}</span>
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    </Link>
                   ) : (
                     <div>Loading</div>
                   ),
