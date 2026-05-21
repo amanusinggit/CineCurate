@@ -25,3 +25,5 @@ node_modules
 
 
 credentials.js
+
+firebase.config.js
