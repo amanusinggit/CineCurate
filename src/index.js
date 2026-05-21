@@ -11,6 +11,7 @@ import MovieDescription from "./Component/Pages/MovieDescription";
 import MovieRegistry from "./Component/Pages/MovieRegistry";
 import ListPage from "./Component/Pages/ListPage";
 import SearchPage from "./Component/Pages/SearchPage";
+import AuthPage from "./Component/Pages/AuthPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -40,6 +41,10 @@ const browserRouterConfig = createBrowserRouter([
         element: <MovieDescription />,
       },
     ],
+  },
+  {
+    path: "/sign/:authType",
+    element: <AuthPage />,
   },
 ]);
 

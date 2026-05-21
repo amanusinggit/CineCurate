@@ -19,12 +19,10 @@ const SearchPage = () => {
     const movieData = await Promise.all(promises);
     promises = movieData.map((movie) => movie.json());
     const jsonMovieData = await Promise.all(promises);
-    console.log(jsonMovieData);
     setMovieList(jsonMovieData);
   };
 
   const fetchGemniResponse = async (prompt) => {
-    console.log("fetch started.");
     try {
       const response = await ai.models.generateContent({
         model: "gemini-2.5-flash",
@@ -45,7 +43,6 @@ const SearchPage = () => {
           },
         },
       });
-      console.log(response.text);
       const movies = JSON.parse(response.text).movies;
       fetchMovieDetails(movies);
     } catch (error) {
@@ -72,9 +69,7 @@ const SearchPage = () => {
               placeholder="search for movies"
               className="px-14 py-3 bg-reel border border-grain rounded-xl w-full"
               onChange={(e) => {
-                console.log("After", searchText);
                 setSearchText(e.target.value);
-                console.log("Before", searchText);
               }}
               value={searchText}
             ></input>
@@ -91,12 +86,16 @@ const SearchPage = () => {
 
         {movieList ? (
           <div className="flex flex-wrap gap-8 p-24">
-            {movieList?.map((movie) => (
-              <MovieCard
-                key={movie?.results[0]?.id}
-                movie={movie?.results[0]}
-              />
-            ))}
+            {movieList?.map((movie) => {
+              return (
+                movie?.total_results > 0 && (
+                  <MovieCard
+                    key={movie?.results[0]?.id}
+                    movie={movie?.results[0]}
+                  />
+                )
+              );
+            })}
           </div>
         ) : (
           <div></div>

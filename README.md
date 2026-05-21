@@ -17,3 +17,7 @@ Setting Up Redux Store
 13. Using promise.all to use resolve a array of promises
 14. using aspect ratio: it needs atleast a fix thing: height or width
 15. apply background-gradient and play with z-index to make it back, but not completely behind the parent container too: try adding positive z-index to child to make it above the background gradient, that won't work as position static does not allow z-index: make the child div as relative
+16. === checks for value and type while == checks for value and sometimes javascript can automatically change the type of something 5 == "5" will give true.
+17. persist the state in redux: on refresh the state vanishes.
+18. why does state.user.length = 0; works and state.user = []; doesn't
+19. understanding the stacking context

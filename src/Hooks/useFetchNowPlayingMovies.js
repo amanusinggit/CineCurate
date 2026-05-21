@@ -12,7 +12,6 @@ const useFetchNowPlayingMovies = (enabled) => {
         options,
       );
       const jsonData = await data.json();
-      console.log(jsonData);
       dispatch(setNowPlayingMovies(jsonData.results));
     };
     if (!enabled) return;
