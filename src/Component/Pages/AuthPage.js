@@ -32,11 +32,13 @@ const AuthPage = () => {
 
   const signin = async (email, password) => {
     try {
+      console.log("trying to sign in");
       const userDetails = await signInWithEmailAndPassword(
         auth,
         email,
         password,
       );
+      console.log("sign in complete");
       const user = userDetails.user.email;
       dispatch(setUser(user));
       setError(null);
@@ -50,6 +52,7 @@ const AuthPage = () => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         dispatch(setUser(user.email));
+        console.log("redux set. navigating");
         navigate("/");
       } else {
         dispatch(removeUser());
