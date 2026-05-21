@@ -14,8 +14,8 @@ const MovieCard = ({ movie }) => {
         handleClick();
       }}
     >
-      <div key={movie.id} className="flex flex-grow">
-        {movie.poster_path ? (
+      <div key={movie?.id} className="flex flex-grow">
+        {movie?.poster_path ? (
           <img
             className="rounded-lg"
             src={IMAGE_BASE_URL + movie.poster_path}
@@ -28,7 +28,7 @@ const MovieCard = ({ movie }) => {
         )}
       </div>
       <div className="truncate font-bold text-celluloid py-4">
-        {movie.original_title}
+        {movie?.title}
       </div>
     </div>
   );

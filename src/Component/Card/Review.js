@@ -9,10 +9,8 @@ const Review = ({ review }) => {
     setActive(!active);
   };
   useEffect(() => {
-    console.log(reviewBox);
     const valueEightVH = Math.floor((window.innerHeight * 8) / 100);
     const reviewBoxHeight = reviewBox.current.offsetHeight;
-    console.log(valueEightVH, reviewBoxHeight);
     if (reviewBoxHeight < valueEightVH) {
       setEnabled(false);
     } else {
@@ -33,7 +31,7 @@ const Review = ({ review }) => {
         </button>
       )}
       <div className="flex gap-3">
-        <Profile name={review.author} />
+        <Profile name={review.author} needHover={false} />
         <div className="w-full">
           <div className="font-bold text-xl text-celluloid pb-1">
             {review?.author}

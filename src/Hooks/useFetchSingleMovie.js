@@ -28,7 +28,6 @@ const useFetchSingleMovie = (setMovieDetails, movieId) => {
         reviews: jsonReviewData,
       };
       setMovieDetails(completeMovieDetails);
-      console.log("completeMovieDetails", completeMovieDetails);
     };
     fetchMovieDetails();
   }, [movieId]);
