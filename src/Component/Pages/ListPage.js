@@ -22,11 +22,8 @@ const ListPage = () => {
     const movieListDetails = await Promise.all(promises);
     promises = movieListDetails.map((movie) => movie.json());
     const jsonMovieListDetails = await Promise.all(promises);
-    console.log(jsonMovieListDetails);
     setMovies(jsonMovieListDetails);
   };
-
-  console.log("rendering started");
 
   return (
     <div className="flex flex-grow">

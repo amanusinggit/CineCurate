@@ -10,7 +10,6 @@ const MovieListCarousel = ({ heading }) => {
   });
   const navigate = useNavigate();
   const handleClick = () => {
-    console.log("clicked");
     navigate(`/movies/${heading}`);
   };
   useFetchMovies(movieTypes[heading.toLowerCase()]);

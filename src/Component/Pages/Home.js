@@ -15,7 +15,7 @@ const Home = () => {
   });
   useFetchNowPlayingMovies(true);
   return (
-    <div>
+    <div className="relative z-0">
       <div className="p-24 mb-8 relative">
         <div className="absolute inset-0  bg-[radial-gradient(ellipse_at_60%_50%,#E8C54712_0%,transparent_60%),radial-gradient(ellipse_at_10%_80%,#E0525215_0%,transparent_40%)]"></div>
         <div className="child flex">
