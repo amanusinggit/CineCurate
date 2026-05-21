@@ -22,3 +22,4 @@ Setting Up Redux Store
 18. why does state.user.length = 0; works and state.user = []; doesn't
 19. understanding the stacking context
 20. removing a file from github. removing a file from commit history: interactive rebase
+21. creating a scrollToTop hook

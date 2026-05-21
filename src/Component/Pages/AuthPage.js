@@ -1,66 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Logo from "../Logo/Logo";
 import { useNavigate, useParams } from "react-router";
 import { validateEmail, validatePassword } from "../../Utility/validations";
-import { useDispatch } from "react-redux";
-import {
-  createUserWithEmailAndPassword,
-  onAuthStateChanged,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
-import { auth } from "../../Firebase/firebase.config";
-import { removeUser, setUser } from "../../features/Movies/userSlice";
+import useSetAuthListener from "../../Hooks/useSetAuthListener";
+import { signup } from "../../Firebase/signup";
+import { signin } from "../../Firebase/signin";
 
 const AuthPage = () => {
   const { authType } = useParams();
-  const [name, setName] = useState(null);
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [error, setError] = useState();
+
   const navigate = useNavigate();
 
-  const dispatch = useDispatch();
-  const signup = async (email, password) => {
-    try {
-      await createUserWithEmailAndPassword(auth, email, password);
-      setError(null);
-      navigate("/sign/in");
-    } catch (error) {
-      setError(error.message);
-    }
-  };
-
-  const signin = async (email, password) => {
-    try {
-      console.log("trying to sign in");
-      const userDetails = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password,
-      );
-      console.log("sign in complete");
-      const user = userDetails.user.email;
-      dispatch(setUser(user));
-      setError(null);
-    } catch (error) {
-      setError(error.message);
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        dispatch(setUser(user.email));
-        console.log("redux set. navigating");
-        navigate("/");
-      } else {
-        dispatch(removeUser());
-        navigate("/sign/in");
-      }
-    });
-    return unsubscribe;
-  }, [dispatch, navigate]);
+  useSetAuthListener();
 
   const handleClick = () => {
     const emailValidationMessage = validateEmail(email);
@@ -75,11 +29,12 @@ const AuthPage = () => {
     }
     setError(null);
     if (authType === "up") {
-      signup(email, password);
+      signup(email, password, setError);
     } else {
-      signin(email, password);
+      signin(email, password, setError);
     }
   };
+
   const toggleAuth = () => {
     if (authType === "up") {
       navigate("/sign/in");
@@ -87,6 +42,7 @@ const AuthPage = () => {
       navigate("/sign/up");
     }
   };
+
   return (
     <div className="h-screen relative bg-void flex items-center justify-center">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_60%_50%,#E8C54712_0%,transparent_60%),radial-gradient(ellipse_at_10%_80%,#E0525215_0%,transparent_40%)]"></div>
@@ -139,7 +95,7 @@ const AuthPage = () => {
             )}
             <input
               type="submit"
-              className="text-void bg-gold-bright rounded-lg px-5 py-4 mt-12 font-semibold flex-grow w-full"
+              className="text-void bg-gold-bright rounded-lg px-5 py-4 mt-12 font-semibold flex-grow w-full active:scale-95 transition"
               value={authType === "up" ? "Create" : "Sign In"}
             />
           </form>

@@ -75,7 +75,7 @@ const SearchPage = () => {
             ></input>
           </div>
           <button
-            className="text-void bg-gold-bright rounded-lg px-5 py-2 font-semibold"
+            className="text-void bg-gold-bright rounded-lg px-5 py-2 font-semibold active:scale-95 transition"
             onClick={() => {
               fetchGemniResponse(searchText);
             }}
