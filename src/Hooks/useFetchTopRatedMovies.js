@@ -16,6 +16,6 @@ const useFetchTopRatedMovies = (enabled) => {
     };
     if (!enabled) return;
     fetchMovieData();
-  }, []);
+  }, [enabled, dispatch]);
 };
 export default useFetchTopRatedMovies;

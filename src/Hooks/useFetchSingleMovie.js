@@ -30,7 +30,7 @@ const useFetchSingleMovie = (setMovieDetails, movieId) => {
       setMovieDetails(completeMovieDetails);
     };
     fetchMovieDetails();
-  }, [movieId]);
+  }, [movieId, setMovieDetails]);
 };
 
 export default useFetchSingleMovie;

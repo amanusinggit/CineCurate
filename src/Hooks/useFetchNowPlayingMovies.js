@@ -16,7 +16,7 @@ const useFetchNowPlayingMovies = (enabled) => {
     };
     if (!enabled) return;
     fetchMovieData();
-  }, []);
+  }, [enabled, dispatch]);
 };
 
 export default useFetchNowPlayingMovies;
