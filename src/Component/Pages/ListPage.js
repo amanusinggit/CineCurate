@@ -4,25 +4,52 @@ import { IMAGE_BASE_URL, options } from "../../Constants/constants";
 import convertToHrsMin from "../../Utility/convertToHrsMin";
 import { Link } from "react-router";
 
+const ShimmerMovieListLoading = () => {
+  return (
+    <div className="">
+      {Array.from({ length: 5 }).map((_, index) => (
+        <div
+          key={index}
+          className="w-full h-52 my-8 py-2 px-4 bg-gold-glow from-gold-tint to-reel border-[#F0EEE81A] border rounded-xl"
+        ></div>
+      ))}
+    </div>
+  );
+};
+
 const ListPage = () => {
+  const [loading, setLoading] = useState(false);
   const [movies, setMovies] = useState(null);
   const [activeTab, setActiveTab] = useState(0);
   const [active, setActive] = useState(false);
+  const [error, setError] = useState(null);
   const handleClick = () => {
     setActive(!active);
   };
   useEffect(() => {
+    console.log("fetch");
     fetchListMovie(0);
   }, []);
   const fetchListMovie = async (index) => {
+    setLoading(true);
     const movieList = listData[index].movieListId;
-    let promises = movieList.map((id) =>
-      fetch(`https://api.themoviedb.org/3/movie/${id}?language=en-US`, options),
-    );
-    const movieListDetails = await Promise.all(promises);
-    promises = movieListDetails.map((movie) => movie.json());
-    const jsonMovieListDetails = await Promise.all(promises);
-    setMovies(jsonMovieListDetails);
+    try {
+      let promises = movieList.map((id) =>
+        fetch(
+          `https://api.themoviedb.org/3/movie/${id}?language=en-US`,
+          options,
+        ),
+      );
+      const movieListDetails = await Promise.all(promises);
+      promises = movieListDetails.map((movie) => movie.json());
+      const jsonMovieListDetails = await Promise.all(promises);
+      setMovies(jsonMovieListDetails);
+      setError(null);
+      setLoading(false);
+    } catch (error) {
+      setError(error.message);
+      console.error("Error fetching movie details:", error);
+    }
   };
 
   return (
@@ -41,7 +68,7 @@ const ListPage = () => {
             )}
           </button>
         </div>
-        {active && (
+        {active && active && (
           <div className="mx-3 px-4 py-4 border border-gold-200/50 rounded-xl mt-10 bg-studio">
             <div class="text-semibold text-celluloid mb-2">New List</div>
             <input
@@ -105,32 +132,38 @@ const ListPage = () => {
                   </div>
                 </div>
                 {listItem.movieListId.map((movieId, i) =>
-                  movies ? (
-                    <Link to={`/movie/${movieId}`}>
-                      <div className="flex my-8 py-2 px-4 border border-ash/10 bg-studio rounded-lg items-center">
-                        <div className="mx-4 mr-6">{i + 1}</div>
-
-                        <div className="p-4 w-[100px]">
-                          <img
-                            className="rounded-lg"
-                            src={IMAGE_BASE_URL + movies[i]?.poster_path}
-                            alt="movie_poster"
-                          ></img>
-                        </div>
-                        <div className="">
-                          <div className="font-2xl font-semibold text-celluloid">
-                            {movies[i]?.title}
-                          </div>
-                          <div className="font-xs text-ash flex gap-2">
-                            <span>{convertToHrsMin(movies[i]?.runtime)}</span>
-                            <span>•</span>
-                            <span>{movies[i]?.release_date.split("-")[0]}</span>
-                          </div>
-                        </div>
-                      </div>
-                    </Link>
+                  error ? (
+                    <div>{error}</div>
+                  ) : loading ? (
+                    <ShimmerMovieListLoading />
                   ) : (
-                    <div>Loading</div>
+                    movies && (
+                      <Link to={`/movie/${movieId}`}>
+                        <div className="flex my-8 py-2 px-4 border border-ash/10 bg-studio rounded-lg items-center">
+                          <div className="mx-4 mr-6">{i + 1}</div>
+
+                          <div className="p-4 w-[100px]">
+                            <img
+                              className="rounded-lg"
+                              src={IMAGE_BASE_URL + movies[i]?.poster_path}
+                              alt="movie_poster"
+                            ></img>
+                          </div>
+                          <div className="">
+                            <div className="font-2xl font-semibold text-celluloid">
+                              {movies[i]?.title}
+                            </div>
+                            <div className="font-xs text-ash flex gap-2">
+                              <span>{convertToHrsMin(movies[i]?.runtime)}</span>
+                              <span>•</span>
+                              <span>
+                                {movies[i]?.release_date.split("-")[0]}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </Link>
+                    )
                   ),
                 )}
               </>

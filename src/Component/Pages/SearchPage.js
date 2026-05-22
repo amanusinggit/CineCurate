@@ -4,25 +4,49 @@ import { GEMNI_API_KEY } from "../../credentials";
 import { options } from "../../Constants/constants";
 import MovieCard from "../Card/MovieCard";
 
+const ShimmerMovieLoading = () => {
+  return (
+    <div className="flex flex-wrap gap-8 p-24">
+      {Array.from({ length: 10 }).map((_, index) => (
+        <div
+          key={index}
+          className="basis-[12%] h-72 bg-gold-glow from-gold-tint to-reel border-[#F0EEE81A] border rounded-3xl"
+        ></div>
+      ))}
+    </div>
+  );
+};
+
 const SearchPage = () => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const [searchText, setSearchText] = useState("");
   const [movieList, setMovieList] = useState(null);
   const ai = new GoogleGenAI({ apiKey: GEMNI_API_KEY });
 
   const fetchMovieDetails = async (movies) => {
-    let promises = movies.map((movieName) =>
-      fetch(
-        `https://api.themoviedb.org/3/search/movie?query=${movieName}`,
-        options,
-      ),
-    );
-    const movieData = await Promise.all(promises);
-    promises = movieData.map((movie) => movie.json());
-    const jsonMovieData = await Promise.all(promises);
-    setMovieList(jsonMovieData);
+    setLoading(true);
+    try {
+      let promises = movies.map((movieName) =>
+        fetch(
+          `https://api.themoviedb.org/3/search/movie?query=${movieName}`,
+          options,
+        ),
+      );
+      const movieData = await Promise.all(promises);
+      promises = movieData.map((movie) => movie.json());
+      const jsonMovieData = await Promise.all(promises);
+      setMovieList(jsonMovieData);
+    } catch (error) {
+      console.log("error fetching movie details", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const fetchGemniResponse = async (prompt) => {
+    setError(null);
+    setLoading(true);
     try {
       const response = await ai.models.generateContent({
         model: "gemini-2.5-flash",
@@ -46,7 +70,8 @@ const SearchPage = () => {
       const movies = JSON.parse(response.text).movies;
       fetchMovieDetails(movies);
     } catch (error) {
-      console.log(error);
+      setError(error.message.error.message + "\nTRY AGAIN");
+      console.log(error.message.error.message);
     }
   };
   return (
@@ -84,8 +109,12 @@ const SearchPage = () => {
           </button>
         </div>
 
-        {movieList ? (
-          <div className="flex flex-wrap gap-8 p-24">
+        {error ? (
+          <div className="text-center text-red-500 p-24">{error}</div>
+        ) : loading ? (
+          <ShimmerMovieLoading />
+        ) : movieList ? (
+          <div className="flex flex-wrap gap-8 p-24 ">
             {movieList?.map((movie) => {
               return (
                 movie?.total_results > 0 && (

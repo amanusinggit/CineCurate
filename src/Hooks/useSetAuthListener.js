@@ -9,13 +9,9 @@ const useSetAuthListener = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
-    console.log("mounting");
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      console.log("auth changed.");
-      console.log("user", user);
       if (user) {
         dispatch(setUser(user.email));
-        console.log("redux set. navigating");
         navigate("/");
       } else {
         dispatch(removeUser());
@@ -24,7 +20,6 @@ const useSetAuthListener = () => {
     });
     return () => {
       unsubscribe();
-      console.log("unmounting");
     };
   }, [dispatch, navigate]);
 };

@@ -19,6 +19,7 @@ const browserRouterConfig = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+
     children: [
       {
         index: true,
@@ -45,6 +46,14 @@ const browserRouterConfig = createBrowserRouter([
   {
     path: "/sign/:authType",
     element: <AuthPage />,
+  },
+  {
+    path: "*",
+    element: (
+      <div className="h-screen flex items-center justify-center bg-void">
+        <div className="text-2xl font-bold text-gold-bright">GO BACK</div>
+      </div>
+    ),
   },
 ]);
 
