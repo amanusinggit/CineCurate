@@ -33,7 +33,7 @@ const Profile = ({ name, needHover }) => {
                 <p className="my-3">{name}</p>
               </div>
               <button
-                className="w-full text-void bg-gold-bright rounded-lg px-5 py-2 font-semibold"
+                className="w-full text-void bg-gold-bright rounded-lg px-5 py-2 font-semibold active:scale-95 transition"
                 onClick={handleClick}
               >
                 sign out

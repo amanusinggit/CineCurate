@@ -9,7 +9,7 @@ const MovieCard = ({ movie }) => {
   };
   return (
     <div
-      className="flex flex-col flex-shrink-0 flex-grow-0 basis-[10%] rounded-lg min-w-0"
+      className="flex flex-col flex-shrink-0 flex-grow-0 basis-[10%] rounded-lg min-w-0 cursor-pointer"
       onClick={() => {
         handleClick();
       }}

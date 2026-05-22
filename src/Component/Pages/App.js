@@ -5,10 +5,13 @@ import { auth } from "../../Firebase/firebase.config";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { removeUser, setUser } from "../../features/Movies/userSlice";
+import useScrollToTop from "../../Hooks/useScrollToTop";
 
 function App() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  useScrollToTop();
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {

@@ -23,7 +23,7 @@ const MovieDescription = () => {
 
   useFetchSingleMovie(setMovieDetails, movieId);
 
-  return (
+  return movieDetails ? (
     <div>
       <div className="relative h-[75vh] overflow-hidden mb-10">
         <iframe
@@ -72,6 +72,10 @@ const MovieDescription = () => {
           {tabData.map((tab, index) => activeTab === index && tab.Component)}
         </div>
       </div>
+    </div>
+  ) : (
+    <div className="h-screen flex items-center justify-center">
+      <div className="w-10 h-10 border-4 border-gray-300 border-t-yellow-400 rounded-full animate-spin"></div>
     </div>
   );
 };

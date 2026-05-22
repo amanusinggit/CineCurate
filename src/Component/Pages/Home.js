@@ -35,7 +35,7 @@ const Home = () => {
               {/* <div>duration</div> */}
             </div>
             <div className="flex gap-4 my-10">
-              <button className="px-5 py-2 bg-gold-bright text-black rounded-lg font-bold">
+              <button className="px-5 py-2 bg-gold-bright text-black rounded-lg font-bold active:scale-95 transition">
                 <i className="fa-solid fa-plus px-1"></i>Add To List
               </button>
               <button
