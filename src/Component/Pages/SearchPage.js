@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { GoogleGenAI } from "@google/genai";
-import { GEMNI_API_KEY } from "../../credentials";
 import { options } from "../../Constants/constants";
 import MovieCard from "../Card/MovieCard";
 
@@ -10,7 +9,7 @@ const ShimmerMovieLoading = () => {
       {Array.from({ length: 10 }).map((_, index) => (
         <div
           key={index}
-          className="basis-[12%] h-72 bg-gold-glow from-gold-tint to-reel border-[#F0EEE81A] border rounded-3xl"
+          className="basis-[200px] h-72 bg-gold-glow from-gold-tint to-reel border-[#F0EEE81A] border rounded-3xl"
         ></div>
       ))}
     </div>
@@ -22,7 +21,7 @@ const SearchPage = () => {
   const [error, setError] = useState(null);
   const [searchText, setSearchText] = useState("");
   const [movieList, setMovieList] = useState(null);
-  const ai = new GoogleGenAI({ apiKey: GEMNI_API_KEY });
+  const ai = new GoogleGenAI({ apiKey: process.env.REACT_APP_GEMNI_API_KEY });
 
   const fetchMovieDetails = async (movies) => {
     setLoading(true);
@@ -70,8 +69,8 @@ const SearchPage = () => {
       const movies = JSON.parse(response.text).movies;
       fetchMovieDetails(movies);
     } catch (error) {
-      setError(error.message.error.message + "\nTRY AGAIN");
-      console.log(error.message.error.message);
+      setError("SOME BACKEND ERROR OCCURRED. PLEASE TRY AGAIN.");
+      console.log(error.message);
     }
   };
   return (

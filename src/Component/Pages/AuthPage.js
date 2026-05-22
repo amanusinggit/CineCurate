@@ -5,8 +5,16 @@ import { validateEmail, validatePassword } from "../../Utility/validations";
 import useSetAuthListener from "../../Hooks/useSetAuthListener";
 import { signup } from "../../Firebase/signup";
 import { signin } from "../../Firebase/signin";
+const {
+  REACT_APP_FIREBASE_API_KEY,
+  REACT_APP_TMDB_TOKEN,
+  REACT_APP_GEMNI_API_KEY,
+} = process.env;
 
 const AuthPage = () => {
+  console.log("tmdb", REACT_APP_TMDB_TOKEN);
+  console.log("firebase", REACT_APP_FIREBASE_API_KEY);
+  console.log("gemini", REACT_APP_GEMNI_API_KEY);
   const { authType } = useParams();
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
