@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { GoogleGenAI } from "@google/genai";
 import { options } from "../../Constants/constants";
 import MovieCard from "../Card/MovieCard";
 import { auth } from "../../Firebase/firebase.config";
@@ -22,7 +21,6 @@ const SearchPage = () => {
   const [error, setError] = useState(null);
   const [searchText, setSearchText] = useState("");
   const [movieList, setMovieList] = useState(null);
-  const ai = new GoogleGenAI({ apiKey: process.env.REACT_APP_GEMNI_API_KEY });
 
   const fetchMovieDetails = async (movies) => {
     setLoading(true);

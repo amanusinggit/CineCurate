@@ -27,7 +27,6 @@ const ListPage = () => {
     setActive(!active);
   };
   useEffect(() => {
-    console.log("fetch");
     fetchListMovie(0);
   }, []);
   const fetchListMovie = async (index) => {
