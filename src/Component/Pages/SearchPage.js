@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { GoogleGenAI } from "@google/genai";
 import { options } from "../../Constants/constants";
 import MovieCard from "../Card/MovieCard";
+import { auth } from "../../Firebase/firebase.config";
 
 const ShimmerMovieLoading = () => {
   return (
@@ -47,27 +48,41 @@ const SearchPage = () => {
     setError(null);
     setLoading(true);
     try {
-      const response = await ai.models.generateContent({
-        model: "gemini-2.5-flash",
-        contents: prompt,
-        config: {
-          responseMimeType: "application/json",
-          responseJsonSchema: {
-            type: "object",
-            properties: {
-              movies: {
-                type: "array",
-                minItems: 10,
-                items: { type: "string" },
-              },
-            },
-            required: ["movies"],
-            additionalProperties: false,
-          },
+      // const response = await ai.models.generateContent({
+      //   model: "gemini-2.5-flash",
+      //   contents: prompt,
+      //   config: {
+      //     responseMimeType: "application/json",
+      //     responseJsonSchema: {
+      //       type: "object",
+      //       properties: {
+      //         movies: {
+      //           type: "array",
+      //           minItems: 10,
+      //           items: { type: "string" },
+      //         },
+      //       },
+      //       required: ["movies"],
+      //       additionalProperties: false,
+      //     },
+      //   },
+      // });
+      // const movies = JSON.parse(response.text).movies;
+      const jwtToken = await auth.currentUser.getIdToken();
+      const response = await fetch("https://cine-curate-backend.vercel.app/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${jwtToken}`,
         },
+        body: JSON.stringify({
+          prompt: prompt,
+        }),
       });
-      const movies = JSON.parse(response.text).movies;
-      fetchMovieDetails(movies);
+
+      const data = await response.json();
+
+      fetchMovieDetails(data.movies);
     } catch (error) {
       setError("SOME BACKEND ERROR OCCURRED. PLEASE TRY AGAIN.");
       console.log(error.message);
