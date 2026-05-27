@@ -125,7 +125,7 @@ Things that weren't obvious until they were — documented as I built this:
  
 ## 🙋‍♂️ Author
  
-**Amanu Singh**
+**Aman Singh**
  
 [![GitHub](https://img.shields.io/badge/GitHub-amanusinggit-181717?style=flat&logo=github)](https://github.com/amanusinggit)
  
